@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>🏎️ 자동차 경주 게임</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>🏎️ 자동차 경주 게임</title>
-</head>
+  <body>
+    <div id="app">
+      <h1 class="title">🏎️ 자동차 경주 게임🏁</h1>
+      <section class="forms">
+        <form class="car-name-form">
+          <label for="car-name">
+            5자 이하의 자동차 이름을 콤마로 구분하여 입력해주세요.
+          </label>
+          <div class="car-name-input">
+            <input
+              class="car-name"
+              type="text"
+              placeholder="east, west, south, north, all"
+            />
+            <button>확인</button>
+          </div>
+        </form>
+        <form class="race-count-form">
+          <label for="race-count">시도할 횟수를 입력해주세요</label>
+          <div class="race-count-input">
+            <input class="race-count" type="text" placeholder="10" />
+            <button>확인</button>
+          </div>
+        </form>
+      </section>
 
-<body>
-  <div id="app">
-  </div>
-</body>
+      <section class="racing-result">
+        <div class="car-progress">
+          <div class="car-name-label">east</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+        </div>
+        <div class="car-progress">
+          <div class="car-name-label">west</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+        </div>
+        <div class="car-progress">
+          <div class="car-name-label">all</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+        </div>
+        <div class="car-progress">
+          <div class="car-name-label">south</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+        </div>
+        <div class="car-progress">
+          <div class="car-name-label">north</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+          <div class="progress">⬇️️</div>
+        </div>
+      </section>
 
+      <section class="result">
+        <h3 class="winner">🏆 최종 우승자: east, west 🏆</h3>
+        <button id="restart-btn">다시 시작하기</button>
+      </section>
+    </div>
+  </body>
 </html>
