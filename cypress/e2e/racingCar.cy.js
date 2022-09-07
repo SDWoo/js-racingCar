@@ -9,9 +9,19 @@ describe('자동차 경주 게임', () => {
     cy.get('.race-count-form').should('be.visible');
   });
 
-  it('자동차 이름이 5글자 이상이면 alert로 메시지를 띄워준다.', () => {});
+  it('자동차 이름이 5글자 이상이면 alert로 메시지를 띄워준다.', () => {
+    cy.get('.car-name-input').type('dooong, woo, shin');
+    cy.get('.car-name-btn').click();
+    cy.on('window:alert', t => {
+      expect(t).to.contains('차 이름이 5글자가 넘습니다.');
+    });
+  });
 
-  // it('자동차 이름이 공백인 경우 alert로 메시지를 띄워준다.', () => {
-  //   cy.get('')
-  // });
+  it('자동차 이름이 공백인 경우 alert로 메시지를 띄워준다.', () => {
+    cy.get('.car-name-input').type('a,b,,c');
+    cy.get('.car-name-btn').click();
+    cy.on('window:alert', t => {
+      expect(t).to.contains('차 이름이 공백입니다.');
+    });
+  });
 });
