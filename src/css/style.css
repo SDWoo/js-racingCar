@@ -76,3 +76,7 @@ form > div > input {
 .winner-container {
   text-align: center;
 }
+
+.hidden {
+  visibility: hidden;
+}
