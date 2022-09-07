@@ -12,11 +12,12 @@
   },
   "rules": {
     "max-depth": ["error", 2],
-    "max-lines-per-function": ["error", 15],
+    // "max-lines-per-function": ["error", 15],
     "no-console": "warn",
     "no-unused-vars": "off",
     "no-var": "error",
     "no-new": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-undef": "off"
   }
 }
