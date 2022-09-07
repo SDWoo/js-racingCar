@@ -18,12 +18,12 @@ export default class InputForms extends Component {
   initEventListener() {
     $('.car-name-form').addEventListener('submit', e => {
       e.preventDefault();
-      this.handleSubmitCar();
+      this.#handleSubmitCar();
     });
 
     $('.race-count-form').addEventListener('submit', e => {
       e.preventDefault();
-      this.handleSubmitRacingCount();
+      this.#handleSubmitRacingCount();
     });
   }
 
@@ -51,7 +51,7 @@ export default class InputForms extends Component {
     return isValid;
   };
 
-  handleSubmitCar() {
+  #handleSubmitCar() {
     const carNameInput = $('.car-name-input');
     const carNames = carNameInput.value.split(',').map(car => car.trim());
     if (!this.#isValidCarName(carNames)) {
@@ -64,7 +64,7 @@ export default class InputForms extends Component {
     $('.race-count-input').focus();
   }
 
-  handleSubmitRacingCount() {
+  #handleSubmitRacingCount() {
     const raceCountInput = $('.race-count-input');
     const value = +raceCountInput.value;
     if (value <= 0) {
