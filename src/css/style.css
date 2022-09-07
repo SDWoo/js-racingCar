@@ -57,6 +57,7 @@ form > div > input {
 }
 
 .car-progress {
+  display: block;
   text-align: center;
   width: 96px;
 }
@@ -75,6 +76,9 @@ form > div > input {
 
 .winner-container {
   text-align: center;
+}
+.winner {
+  display: block;
 }
 
 .hidden {

@@ -39,4 +39,11 @@ describe('자동차 경주 게임', () => {
       expect(t).to.contains('1회 이상의 횟수를 입력해주세요.');
     });
   });
+
+  it('레이싱 횟수 입력 시, 게임 결과 창과 우승자 창이 보여진다.', () => {
+    testCarNameInput('a,b,c,d');
+    testRacingCount('1');
+    cy.get('.car-progress').should('have.css', 'display', 'block');
+    cy.get('.winner').should('have.css', 'display', 'block');
+  });
 });
