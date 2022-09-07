@@ -20,14 +20,9 @@ export default class InputForms extends Component {
       e.preventDefault();
       this.handleSubmitCar();
     });
-
-    $('.race-count-form').addEventListener('submit', e => {
-      e.preventDefault();
-      this.handleSubmitRacingCount();
-    });
   }
 
-  #setErrorMessage = carNameLength => {
+  #isValidCarName = carNameLength => {
     if (carNameLength > MAX_CAR_NAME_LENGTH) {
       return LONG_CAR_NAME_ERROR_MESSAGE;
     }
@@ -37,45 +32,22 @@ export default class InputForms extends Component {
     }
   };
 
-  #isValidCarName = carNames => {
-    let isValid = true;
-    carNames.forEach(car => {
-      const condition = !(
-        MIN_CAR_NAME_LENGTH < car.length && car.length <= MAX_CAR_NAME_LENGTH
-      );
-      if (condition) {
-        alert(this.#setErrorMessage(car.length));
-        isValid = false;
-      }
-    });
-    return isValid;
-  };
-
   handleSubmitCar() {
     const carNameInput = $('.car-name-input');
     const carNames = carNameInput.value.split(',').map(car => car.trim());
-    if (!this.#isValidCarName(carNames)) {
-      carNameInput.value = '';
-      return;
-    }
+    carNames.forEach(car => {
+      if (
+        !(MIN_CAR_NAME_LENGTH < car.length && car.length <= MAX_CAR_NAME_LENGTH)
+      ) {
+        alert(this.#isValidCarName(car.length));
+        carNameInput.value = '';
+        return;
+      }
+    });
     this.props.setCar(carNames.map(car => new Car(car)));
     carNameInput.value = '';
     $('.race-count-form').classList.remove('hidden');
     $('.race-count-input').focus();
-  }
-
-  handleSubmitRacingCount() {
-    const raceCountInput = $('.race-count-input');
-    const value = +raceCountInput.value;
-    if (value <= 0) {
-      alert(LESS_RACING_COUNT_ERROR_MESSAGE);
-      raceCountInput.value = '';
-      return;
-    }
-    this.props.setRacingCount(+raceCountInput.value);
-    raceCountInput.value = '';
-    this.props.race();
-    this.props.mountRacingResult();
   }
 
   render() {
@@ -95,7 +67,7 @@ export default class InputForms extends Component {
           <label for="race-count">시도할 횟수를 입력해주세요</label>
           <div class="race-count">
             <input class="race-count-input" type="text" placeholder="10" />
-            <button class="race-count-btn">확인</button>
+            <button>확인</button>
           </div>
         `;
   }
