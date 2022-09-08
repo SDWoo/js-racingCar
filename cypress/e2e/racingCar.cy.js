@@ -65,4 +65,15 @@ describe('자동차 경주 게임', () => {
       }
     });
   });
+
+  it('화살표 바의 개수와 레이싱 횟 수가 같으면 우승자에 이름이 뜬다.', () => {
+    testCarNameInput('a,b,c,d');
+    testRacingCount('2');
+    cy.get('.car-progress').each(v => {
+      if (v.find('.progress').length === 2) {
+        const winners = v.find('.car-name-label')[0].innerText;
+        cy.get('.winner').contains(winners);
+      }
+    });
+  });
 });
