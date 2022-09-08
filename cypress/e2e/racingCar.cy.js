@@ -46,4 +46,13 @@ describe('자동차 경주 게임', () => {
     cy.get('.car-progress').should('have.css', 'display', 'block');
     cy.get('.winner').should('have.css', 'display', 'block');
   });
+
+  it('자동차 이름을 입력한 순서대로 자동차들이 생성된다.', () => {
+    const cars = ['a', 'b', 'c', 'd'];
+    testCarNameInput('a,b,c,d');
+    testRacingCount('2');
+    cy.get('.car-name-label').each((v, i) => {
+      cy.get(v).should('have.text', cars[i]);
+    });
+  });
 });
