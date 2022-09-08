@@ -55,4 +55,14 @@ describe('자동차 경주 게임', () => {
       cy.get(v).should('have.text', cars[i]);
     });
   });
+
+  it('result의 화살표 바의 수가 레이싱 횟수로 입력받은 값보다 작거나 같다', () => {
+    testCarNameInput('a,b,c,d');
+    testRacingCount('2');
+    cy.get('.car-progress').each(v => {
+      if (v.find('.progress').length > 0) {
+        cy.get(v).find('.progress').its('length').should('be.lte', 2);
+      }
+    });
+  });
 });
